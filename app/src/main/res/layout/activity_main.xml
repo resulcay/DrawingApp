@@ -6,16 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.drawingapp.DrawingView
-        android:id="@+id/drawing_view"
+    <FrameLayout
+        android:id="@+id/frame_layout_drawing_view_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
+        android:padding="1dp"
         android:background="@drawable/background_drawing_view_layout"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout_paint_colors"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/paris_bg"
+            android:contentDescription="image"
+            android:scaleType="centerCrop"/>
+
+        <com.example.drawingapp.DrawingView
+            android:id="@+id/drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80FFFFFF" />
+
+    </FrameLayout>
+
+
 
     <LinearLayout
         android:id="@+id/linear_layout_paint_colors"
@@ -25,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@id/image_button_brush"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/drawing_view">
+        app:layout_constraintTop_toBottomOf="@id/frame_layout_drawing_view_container">
 
         <ImageButton
             android:layout_width="25dp"
@@ -34,6 +53,16 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/skin"
             android:background="@color/skin"
+            android:onClick="colorClicked"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/palette_normal"
+            android:tag="@color/black"
+            android:background="@color/black"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -42,6 +71,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/red"
             android:background="@color/red"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -50,6 +80,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/green"
             android:background="@color/green"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -58,6 +89,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/blue"
             android:background="@color/blue"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -66,6 +98,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/yellow"
             android:background="@color/yellow"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -74,6 +107,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/lollipop"
             android:background="@color/lollipop"
+            android:onClick="colorClicked"
             />
         <ImageButton
             android:layout_width="25dp"
@@ -82,6 +116,7 @@
             android:src="@drawable/palette_normal"
             android:tag="@color/random"
             android:background="@color/random"
+            android:onClick="colorClicked"
             />
 
     </LinearLayout>

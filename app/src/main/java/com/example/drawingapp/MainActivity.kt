@@ -1,11 +1,15 @@
 package com.example.drawingapp
 
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 
@@ -55,9 +59,29 @@ class MainActivity : AppCompatActivity() {
             drawingView?.setBrushSize(20f)
             brushDialog.dismiss()
         }
-
+       brushDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         brushDialog.show()
 
+    }
+
+    fun colorClicked(view: View)
+    {
+        if (view !== mImageButtonCurrentPaint)
+        {
+            val imageButton = view as ImageButton
+            val colorTag = imageButton.tag.toString()
+
+            drawingView?.setColor(colorTag)
+
+            imageButton.setImageDrawable(
+                ContextCompat.getDrawable(this, R.drawable.palette_selected)
+            )
+            mImageButtonCurrentPaint?.setImageDrawable(
+                ContextCompat.getDrawable(this, R.drawable.palette_normal)
+            )
+        }
+
+       // Toast.makeText(this,"Clicked ----- yo",Toast.LENGTH_SHORT).show()
     }
 }
